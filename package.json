@@ -1,0 +1,23 @@
+{
+  "name": "mongoose-dependent-seed",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/SharonGrossman/mongoose-dependent-seed.git",
+  "author": "Sharon Grossman <sharong1337@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "babel": "babel src -d lib -s",
+    "build": "rimraf lib && npm run babel",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "dependency-graph": "^0.8.0",
+    "mongoose": "^5.6.10"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5"
+  }
+}
