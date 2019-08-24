@@ -1,6 +1,6 @@
 {
   "name": "mongoose-dependent-seed",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "index.js",
   "repository": "https://github.com/SharonGrossman/mongoose-dependent-seed.git",
   "author": "Sharon Grossman <sharong1337@gmail.com>",
