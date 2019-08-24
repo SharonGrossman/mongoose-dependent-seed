@@ -6,6 +6,7 @@
   "author": "Sharon Grossman <sharong1337@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "test": "echo No Tests Yet",
     "babel": "babel src -d lib -s",
     "build": "rimraf lib && npm run babel",
     "prepublishOnly": "npm run build"
