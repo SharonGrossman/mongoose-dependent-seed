@@ -6,7 +6,7 @@
   "author": "Sharon Grossman <sharong1337@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "echo No Tests Yet",
+    "test": "yarn lint",
     "precommit": "lint-staged",
     "build": "babel src -d lib -s",
     "lint": "eslint src --fix",
