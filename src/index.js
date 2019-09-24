@@ -39,17 +39,15 @@ export const addSeed = (Model, { seed, dependencies = [] } = {}) => {
   }
 
   models[Model.modelName] = Model;
-  info[Model.modelName] = { dependencies: dependencies.map(({modelName}) => modelName), seed };
+  info[Model.modelName] = { dependencies: dependencies.map(({ modelName }) => modelName), seed };
 };
 
 export default (name, Schema, rest) => {
   if (!name) {
     throw new TypeError('mongoose-plugin-seed: name must be provided');
-  }
-  else if (typeof name !== 'string') {
+  } else if (typeof name !== 'string') {
     throw new TypeError('mongoose-plugin-seed: name must be a string');
-  }
-  else if (!Schema) {
+  } else if (!Schema) {
     throw new TypeError('mongoose-plugin-seed: Schema must be provided');
   }
 
@@ -64,12 +62,15 @@ export const seed = async () => {
   const order = getSchemasOrder();
   const seeds = {};
 
-  return Promise.all(order.map(async modelName => {
-    const Model = models[modelName];
+  return Promise.all(
+    order.map(async modelName => {
+      const Model = models[modelName];
 
-    seeds[modelName] = Promise.all(info[modelName].dependencies.map(async dep => await seeds[dep]))
-      .then(async deps => await seedModel(Model, deps));
+      seeds[modelName] = Promise.all(
+        info[modelName].dependencies.map(async dep => seeds[dep])
+      ).then(async deps => seedModel(Model, deps));
 
-    return seeds[modelName];
-  }));
+      return seeds[modelName];
+    })
+  );
 };
